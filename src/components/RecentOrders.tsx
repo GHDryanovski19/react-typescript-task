@@ -1,11 +1,26 @@
 import {useEffect, useState } from "react";
 import BouncingDotsLoader from './BouncingDotsLoader'
-import data from '../data/orders.json'
+import Order from "./Order";
+import axios from "axios";
+
+type orderDataType = {
+    sent: {
+        id: number
+        order_id: number
+        sent_dt: string
+        sent_tm: string
+        subject: {
+            title: string
+            email: string
+        }
+        type: string
+    }[]
+}
 
 type subTabButtonState = {
-    id : number
-    text : string
-    isHighlighted : boolean
+    id: number
+    text: string
+    isHighlighted: boolean
 }
 
 type subTabButtonsProps = {
@@ -14,12 +29,25 @@ type subTabButtonsProps = {
     toggleSubTabButton: Function
 }
 
-const RecentOrders = ({subTabButtons, toggleSubTabButton, orderButtons } : subTabButtonsProps ) => {
-    
+const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTabButtonsProps ) => {
+    const ordersUrl = 'https://evoteam-verasoft.github.io/data/orders.json'
+    const [ordersData, setOrdersData] = useState<orderDataType>();
+  
+    useEffect(() => {
+      getOrdersData();
+    }, []);
+  
+
+  const getOrdersData = () => {
+    axios.get(`${ordersUrl}`)
+    .then((res) => {
+      setOrdersData(res.data.orders_AAA);
+    })
+    .catch(error => console.error(`Error: ${error}`));
+  }
+
     const [hover, setHover] = useState(false);
     const [hoverSecond, setHoverSecond] = useState(false);
-    const [resendHover, setResendHover] = useState(false);
-    const [resendHoverSecond, setResendHoverSecond] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
 
     const toggleIsLoading = () => {
@@ -27,7 +55,6 @@ const RecentOrders = ({subTabButtons, toggleSubTabButton, orderButtons } : subTa
     };
 
     useEffect(() => {
-    console.log('isLoading is: ', setIsLoaded);
     }, [setIsLoaded]);
 
     setTimeout(() => {toggleIsLoading()}, 2000);
@@ -57,17 +84,6 @@ const RecentOrders = ({subTabButtons, toggleSubTabButton, orderButtons } : subTa
             cursor: 'pointer',
             transition: 'all 200ms',
         },
-    }
-
-    const resendButtonStyle = {
-        backgroundColor: '#7D869A',
-        cursor: 'pointer',
-        transition: 'all 200ms',
-        "&:hover" : {
-            backgroundColor: '#636a7a',
-            cursor: 'pointer',
-            transition: 'all 200ms',
-        }
     }
 
     return (
@@ -107,52 +123,9 @@ const RecentOrders = ({subTabButtons, toggleSubTabButton, orderButtons } : subTa
                         <text className='recent-orders-categories-subject'>SUBJECT</text>
                         <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
                         <text className='recent-orders-categories-number'>ORDER #</text>
-                        <div className='recent-orders-top-order'>
-                            <div className='recent-orders-order-time-container'>
-                                <text>{data.orders_AAA.sent.at(0)?.sent_dt}</text>
-                                <text className='recent-orders-order-small-text'>{data.orders_AAA.sent.at(0)?.sent_tm}</text>
-                            </div>
-                            <div className='recent-orders-subject-container'>
-                                <text>{data.orders_AAA.sent.at(0)?.subject.title}</text>
-                                <text className='recent-orders-order-small-text'>{data.orders_AAA.sent.at(0)?.subject.email}</text>
-                            </div>
-                            <div className='recent-orders-order-type-container'>
-                                <text>{data.orders_AAA.sent.at(0)?.type}</text>
-                                <text className='recent-orders-order-number-top'>{data.orders_AAA.sent.at(0)?.order_id}</text>
-                            </div>
-                            <button
-                                onMouseEnter={()=>{
-                                    setResendHover(true);
-                                }}
-                                onMouseLeave={()=>{
-                                    setResendHover(false);
-                                }}
-                                style={resendHover ? resendButtonStyle["&:hover"] : resendButtonStyle}
-                                className='recent-orders-resend-button'>RESEND</button>
-                        </div>
-                        <div className='recent-orders-bottom-order'>
-                        <div className='recent-orders-order-time-container'>
-                                <text>{data.orders_AAA.sent.at(1)?.sent_dt}</text>
-                                <text className='recent-orders-order-small-text'>{data.orders_AAA.sent.at(1)?.sent_tm}</text>
-                            </div>
-                            <div className='recent-orders-subject-container'>
-                                <text>{data.orders_AAA.sent.at(1)?.subject.title}</text>
-                                <text className='recent-orders-order-small-text'>{data.orders_AAA.sent.at(1)?.subject.email}</text>
-                            </div>
-                            <div className='recent-orders-order-type-container'>
-                                <text>Order Receipt Email</text>
-                                <text className='recent-orders-order-number-bottom'>{data.orders_AAA.sent.at(1)?.order_id}</text>
-                            </div>
-                            <button
-                                onMouseEnter={()=>{
-                                    setResendHoverSecond(true);
-                                }}
-                                onMouseLeave={()=>{
-                                    setResendHoverSecond(false);
-                                }}
-                                style={resendHoverSecond ? resendButtonStyle["&:hover"] : resendButtonStyle}
-                                className='recent-orders-resend-button'>RESEND</button>
-                        </div> 
+                        {ordersData?.sent?.map((order) => (
+                            <Order key={order.id} sent={order} />
+                        ))}
                     </div> : '' }
             </div>
             {subTabButtons.at(1)?.isHighlighted || !orderButtons.at(2)?.isHighlighted ? 

@@ -2,13 +2,14 @@ import { useState } from 'react'
 import { FaRegStar } from 'react-icons/fa'
 import { FaStar } from 'react-icons/fa'
 import Button from './Button';
-import data from '../data/header.json'
 
 type HeaderProps = {
     newOrder: Function
+    first_name: string | undefined
+    last_name: string | undefined
 }
 
-const Header = ({ newOrder } : HeaderProps) => {
+const Header = ({ newOrder, first_name, last_name } : HeaderProps) => {
     const [hover, setHover] = useState(false);
     const [star, setStar] = useState(false);
 
@@ -42,7 +43,7 @@ const Header = ({ newOrder } : HeaderProps) => {
             }}
             style={hover ? starIconStyle['&:hover'] : starIconStyle} onClick={() => (setStar(!star))}/> 
             }
-            <text className='header-container-user-name'>{data.first_name + ' ' + data.last_name}</text>
+            <text className='header-container-user-name'>{first_name + ' ' + last_name}</text>
             <Button functionality={newOrder}/>
         </div>
     )

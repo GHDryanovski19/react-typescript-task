@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { NONAME } from 'dns'
 
 type ButtonProps = {
     color: string,
@@ -8,30 +9,19 @@ type ButtonProps = {
 }
 
 const Button = ( {color, text, functionality} : ButtonProps ) => {
-
-    const [hover, setHover] = useState(false);
-
+    const [disabled, setDisabled] = useState(false);
     const buttonStyle = {
+        backgroundColor: color
+    }
+    const buttonStyleDis = {
         backgroundColor: color,
-        transition: 'all 200ms',
-        cursor: 'pointer',
-        "&:hover": {
-            backgroundColor: color,
-            opacity: '0.6',
-            transition: 'all 200ms',
-            cursor: 'pointer',
-        },
+        opacity: 1,
+        transition: 'none'
     }
     return (
         <button className='header-container-button' 
-        onMouseEnter={()=>{
-            setHover(true);
-        }}
-        onMouseLeave={()=>{
-            setHover(false);
-        }}
-        style={hover ? buttonStyle['&:hover'] : buttonStyle}
-        onClick={() => {functionality(); setHover(false)}}>{text}</button>
+        style={disabled ? buttonStyleDis : buttonStyle}
+        onClick={() => {functionality(); setDisabled(true); setTimeout(() => {setDisabled(false)}, 1000);}}>{text}</button>
     )
 }
 

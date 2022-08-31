@@ -1,3 +1,0 @@
-header = "https://evoteam-verasoft.github.io/data/summary.json"
-orders = "https://evoteam-verasoft.github.io/data/orders.json"
-
