@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { NONAME } from 'dns'
 
 type ButtonProps = {
     color: string,

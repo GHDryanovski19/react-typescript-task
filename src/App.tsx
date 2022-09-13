@@ -31,12 +31,12 @@ type summaryDataType = {
 }
 
 function App() {
-    const summaryUrl = 'https://evoteam-verasoft.github.io/data/summary.json';
-    const [summaryData, setSummaryData] = useState<summaryDataType>();
-  
-    useEffect(() => {
-      getSummaryData();
-    }, []);
+  const summaryUrl = 'https://evoteam-verasoft.github.io/data/summary.json';
+  const [summaryData, setSummaryData] = useState<summaryDataType>();
+
+  useEffect(() => {
+    getSummaryData();
+  }, []);
   
   const getSummaryData = () => {
     axios.get(`${summaryUrl}`)
@@ -46,49 +46,46 @@ function App() {
     .catch(error => console.error(`Error: ${error}`));
   }
 
-  const [orderButtons, setOrderButton] = useState(
-      [
-      {
-        id: 1,
-        text: 'ORDERS A',
-        isHighlighted: true,
-      },
-      {
-        id: 2,
-        text: 'ORDERS AA',
-        isHighlighted: false,
-      },
-      {
-        id: 3,
-        text: 'ORDERS AAA',
-        isHighlighted: false,
-      },
-      {
-        id: 4,
-        text: 'ORDERS B',
-        isHighlighted: false,
-      },
-      {
-        id: 5,
-        text: 'ORDERS C',
-        isHighlighted: false,
-      }
+  const [orderButtons, setOrderButton] = useState([
+    {
+      id: 1,
+      text: 'ORDERS A',
+      isHighlighted: true,
+    },
+    {
+      id: 2,
+      text: 'ORDERS AA',
+      isHighlighted: false,
+    },
+    {
+      id: 3,
+      text: 'ORDERS AAA',
+      isHighlighted: false,
+    },
+    {
+      id: 4,
+      text: 'ORDERS B',
+      isHighlighted: false,
+    },
+    {
+      id: 5,
+      text: 'ORDERS C',
+      isHighlighted: false,
+    }
   ])
 
-  const [subTabButtons, setSubTabButtons] = useState (
-    [
-      {
-        id: 1,
-        text: 'SENT',
-        isHighlighted: true,
-      },
-      {
-        id: 2,
-        text: 'ERRORS',
-        isHighlighted: false,
-      },
-    ]
-  )
+  const [subTabButtons, setSubTabButtons] = useState ([
+    {
+      id: 1,
+      text: 'SENT',
+      isHighlighted: true,
+    },
+    {
+      id: 2,
+      text: 'ERRORS',
+      isHighlighted: false,
+    },
+  ])
 
   const toggleOrderButton = (id : number) => {
     setOrderButton(orderButtons.map((OrderButton) => OrderButton.id === id ?
@@ -123,27 +120,43 @@ function App() {
         </div>
       </div>
 
-      <Header newOrder={changeOrderState} first_name={summaryData?.first_name} last_name={summaryData?.last_name}/>
+      <Header
+        newOrder={changeOrderState} 
+        first_name={summaryData?.first_name} 
+        last_name={summaryData?.last_name}/>
+
       <hr className="header-container-hr"></hr>
-      <UserData gender={summaryData?.gender}
-                birth_date={summaryData?.birth_date}
-                id={summaryData?.id}
-                mobile_phone={summaryData?.mobile_phone}
-                work_phone={summaryData?.work_phone}
-                home_phone={summaryData?.home_phone}
-                email={summaryData?.email}
-                />
-      <Activity sms={summaryData?.activity.sms}
-                email={summaryData?.activity.email}
-                orders={summaryData?.activity.orders} />
-      <SmsStatus status={summaryData?.carrier_status.status}
-                  since={summaryData?.carrier_status.since}/>
+
+      <UserData 
+        gender={summaryData?.gender}
+        birth_date={summaryData?.birth_date}
+        id={summaryData?.id}
+        mobile_phone={summaryData?.mobile_phone}
+        work_phone={summaryData?.work_phone}
+        home_phone={summaryData?.home_phone}
+        email={summaryData?.email}/>
+
+      <Activity 
+        sms={summaryData?.activity.sms}
+        email={summaryData?.activity.email}
+        orders={summaryData?.activity.orders}/>
+
+      <SmsStatus 
+        status={summaryData?.carrier_status.status}
+        since={summaryData?.carrier_status.since}/>
+
       <hr className="sms-status-container-hr"></hr>
-      <OrdersButtons orderButtons={orderButtons} toggleOrderButton={toggleOrderButton}/>
+
+      <OrdersButtons 
+        orderButtons={orderButtons} 
+        toggleOrderButton={toggleOrderButton}/>
+
       <hr className="order-buttons-container-hr"></hr>
-      <RecentOrders subTabButtons={subTabButtons}
-                    toggleSubTabButton={toggleSubTabButton} 
-                    orderButtons={orderButtons}/>
+
+      <RecentOrders 
+        subTabButtons={subTabButtons}
+        toggleSubTabButton={toggleSubTabButton} 
+        orderButtons={orderButtons}/>
     </div>
   );
 }

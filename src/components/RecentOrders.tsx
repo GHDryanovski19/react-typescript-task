@@ -32,19 +32,19 @@ type subTabButtonsProps = {
 const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTabButtonsProps ) => {
     const ordersUrl = 'https://evoteam-verasoft.github.io/data/orders.json'
     const [ordersData, setOrdersData] = useState<orderDataType>();
-  
+
     useEffect(() => {
-      getOrdersData();
+        getOrdersData();
     }, []);
   
 
-  const getOrdersData = () => {
+    const getOrdersData = () => {
     axios.get(`${ordersUrl}`)
     .then((res) => {
-      setOrdersData(res.data.orders_AAA);
+        setOrdersData(res.data.orders_AAA);
     })
     .catch(error => console.error(`Error: ${error}`));
-  }
+    }
 
     const [hover, setHover] = useState(false);
     const [hoverSecond, setHoverSecond] = useState(false);
@@ -69,9 +69,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
             color: `${subTabButtons.at(0)?.isHighlighted ? '#3A3A3A' : '#FFFFFF'}`,
             cursor: 'pointer',
             transition: 'all 200ms',
-        },
-
-    }
+    }}
 
     const subTabButtonStyleSecond =  {
         backgroundColor: `${subTabButtons.at(1)?.isHighlighted ? '#FFFFFF' : '#7D869A'}`,
@@ -83,14 +81,12 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
             color: `${subTabButtons.at(1)?.isHighlighted ? '#3A3A3A' : '#FFFFFF'}`,
             cursor: 'pointer',
             transition: 'all 200ms',
-        },
-    }
+    }}
 
     return (
         <div>
             <div className='recent-orders-container'>
                 <div className='recent-orders-header'>
-
                     <button className='recent-orders-button-first'
                             onMouseEnter={()=>{
                                 setHover(true);
@@ -100,7 +96,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
                             }}
                             style={hover ? subTabButtonStyleFirst["&:hover"] : subTabButtonStyleFirst} 
                             onClick={() => toggleSubTabButton(subTabButtons.at(0)?.id, 
-                            setIsLoaded(false) ,setTimeout(() => {toggleIsLoading()}, 2000))}
+                            setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(0)?.text}</a></button>
 
                     <button className='recent-orders-button-second' 
@@ -112,33 +108,33 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
                             }}
                             style={hoverSecond ? subTabButtonStyleSecond["&:hover"] : subTabButtonStyleSecond} 
                             onClick={() => toggleSubTabButton(subTabButtons.at(1)?.id, 
-                            setIsLoaded(false) , setTimeout(() => {toggleIsLoading()}, 2000))}
+                            setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(1)?.text}</a></button>
 
                     <text className='recent-orders-header-text'>RECENT ORDERS</text>
                 </div>
                 {subTabButtons.at(0)?.isHighlighted && orderButtons.at(2)?.isHighlighted ? 
-                    <div className='recent-orders-categories'>
-                        <text className='recent-orders-categories-date'>DATE & TIME</text>
-                        <text className='recent-orders-categories-subject'>SUBJECT</text>
-                        <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
-                        <text className='recent-orders-categories-number'>ORDER #</text>
-                        {ordersData?.sent?.map((order) => (
-                            <Order key={order.id} sent={order} />
-                        ))}
-                    </div> : '' }
+                <div className='recent-orders-categories'>
+                    <text className='recent-orders-categories-date'>DATE & TIME</text>
+                    <text className='recent-orders-categories-subject'>SUBJECT</text>
+                    <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
+                    <text className='recent-orders-categories-number'>ORDER #</text>
+                    {ordersData?.sent?.map((order) => (
+                        <Order key={order.id} sent={order} />
+                    ))}
+                </div> : '' }
             </div>
             {subTabButtons.at(1)?.isHighlighted || !orderButtons.at(2)?.isHighlighted ? 
-                <div className='no-items'>
-                    {isLoaded ? 
-                        <div>
-                            <text>No Items</text>
-                        </div> : 
-                        <div>
-                            <BouncingDotsLoader />
-                        </div>
-                    }             
-                </div> : '' }
+            <div className='no-items'>
+                {isLoaded ? 
+                    <div>
+                        <text>No Items</text>
+                    </div> : 
+                    <div>
+                        <BouncingDotsLoader />
+                    </div>
+                }             
+            </div> : '' }
         </div>
     )
 }

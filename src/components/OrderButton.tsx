@@ -26,8 +26,7 @@ const OrderButton = ({orderButton, toggleOrderButton} : OrderButtonsProps) => {
             color: `${orderButton?.isHighlighted ? '#FFF' : '#000'}`,
             backgroundColor: `${orderButton?.isHighlighted ? '#2A2A2A' : '#C2C2C2'}`,
             transition: 'all 200ms',
-        },
-    }
+    }}
 
   return (
     <button className='orders-container-button' 
@@ -37,16 +36,17 @@ const OrderButton = ({orderButton, toggleOrderButton} : OrderButtonsProps) => {
     onMouseLeave={()=>{
         setHover(false);
     }}
-    style={hover ? ButtonStyle['&:hover'] : ButtonStyle} onClick={() => toggleOrderButton(orderButton?.id)} >{orderButton?.text}</button>
+    style={hover ? ButtonStyle['&:hover'] : ButtonStyle} 
+    onClick={() => toggleOrderButton(orderButton?.id)}>{orderButton?.text}</button>
   )
 }
 
 OrderButton.defaultProps = {
-    text: 'ORDERS',
+    text: 'ORDERS'
 }
 
 OrderButton.propTypes = {
-    text: PropTypes.string,
+    text: PropTypes.string
 }
 
 export default OrderButton

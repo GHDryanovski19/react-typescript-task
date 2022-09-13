@@ -11,7 +11,7 @@ type OrderButtonsProps = {
     toggleOrderButton: Function
 }
 
-const OrdersButtons = ( {orderButtons, toggleOrderButton } : OrderButtonsProps ) => {
+const OrdersButtons = ( {orderButtons, toggleOrderButton} : OrderButtonsProps ) => {
     return (
         <div className='orders-buttons-container'>
             {orderButtons.map((orderBtn) => (

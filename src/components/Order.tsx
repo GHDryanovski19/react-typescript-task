@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 type orderData = {
     sent: {
         id: number
@@ -16,8 +14,8 @@ type orderData = {
 
 const Order = ( { sent } : orderData ) => {
     let isOdd : boolean = false;
-    if (sent?.id != undefined) {
-          isOdd = sent.id % 2 == 0 ? true : false
+    if (sent?.id !== undefined) {
+          isOdd = sent.id % 2 === 0 ? true : false
     }
     
     let dateSent: string = '';
@@ -25,7 +23,7 @@ const Order = ( { sent } : orderData ) => {
     var  months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     var sentDate : string[] | undefined = sent?.sent_dt?.split('-');
-    if (sentDate != undefined) {
+    if (sentDate !== undefined) {
         const sentDateDay = new Date(parseInt(sentDate[0], 10), parseInt(sentDate[1], 10), parseInt(sentDate[2], 10))
         var month = parseInt(sentDate[1], 10);
         dateSent = sentDateDay.toLocaleDateString('en-US', {
@@ -41,7 +39,7 @@ const Order = ( { sent } : orderData ) => {
     );
 
   return (
-    <div className={isOdd ? 'recent-orders-bottom-order' : 'recent-orders-top-order'}>
+    <div className={isOdd ? 'recent-orders-order bottom-order' : 'recent-orders-order top-order'}>
         <div className='recent-orders-order-time-container'>
             <text>{dateSent}</text>
             <text className='recent-orders-order-small-text'>{timeString12hr}</text>
@@ -52,8 +50,10 @@ const Order = ( { sent } : orderData ) => {
             <text className='recent-orders-order-small-text'>{sent?.subject.email}</text>
         </div>
         <div className='recent-orders-order-type-container'>
-            <text>{sent?.type}</text>
-            <text className={isOdd ? 'recent-orders-order-number-bottom' : 'recent-orders-order-number-top'}>{sent?.order_id}</text>
+            <text className='recent-orders-order-type '>{sent?.type}</text>
+        </div>
+        <div className='recent-orders-order-number-container'>
+            <text>{sent?.order_id}</text>
         </div>
         <button className='recent-orders-resend-button'>RESEND</button>
     </div>
