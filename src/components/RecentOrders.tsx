@@ -1,20 +1,11 @@
 import {useEffect, useState } from "react";
 import BouncingDotsLoader from './BouncingDotsLoader'
+import { IOrder } from "../types";
 import Order from "./Order";
 import axios from "axios";
 
 type orderDataType = {
-    sent: {
-        id: number
-        order_id: number
-        sent_dt: string
-        sent_tm: string
-        subject: {
-            title: string
-            email: string
-        }
-        type: string
-    }[]
+    sent: IOrder[]
 }
 
 type subTabButtonState = {
@@ -37,7 +28,6 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
         getOrdersData();
     }, []);
   
-
     const getOrdersData = () => {
     axios.get(`${ordersUrl}`)
     .then((res) => {

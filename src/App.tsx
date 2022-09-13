@@ -6,45 +6,40 @@ import Activity from "./components/Activity";
 import SmsStatus from "./components/SmsStatus";
 import OrdersButtons from "./components/OrdersButtons";
 import RecentOrders from "./components/RecentOrders";
+import { IUser } from "./types";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "./reducers/rootReducer";
+import { fetchUserRequest } from "./actions";
 import axios from "axios";
-
-type summaryDataType = {
-  id : number
-  first_name: string
-  last_name: string
-  photo_url: null
-  gender: string
-  birth_date: string
-  home_phone: string
-  mobile_phone: string
-  work_phone: string
-  email: string
-  activity: {
-    sms: number
-    email: number
-    orders: number
-  }
-  carrier_status: {
-    since: string
-    status: string
-  }
-}
 
 function App() {
   const summaryUrl = 'https://evoteam-verasoft.github.io/data/summary.json';
-  const [summaryData, setSummaryData] = useState<summaryDataType>();
+  const [userData, setUserData] = useState<IUser>();
 
   useEffect(() => {
-    getSummaryData();
+    getuserData();
   }, []);
   
-  const getSummaryData = () => {
+  const getuserData = () => {
     axios.get(`${summaryUrl}`)
     .then((res) => {
-      setSummaryData(res.data);
+      setUserData(res.data);
     })
     .catch(error => console.error(`Error: ${error}`));
   }
+
+  const dispatch = useDispatch();
+
+    const {pending, user } = useSelector(
+        (state: RootState) => state.user
+    );
+
+    useEffect(() => {
+        // dispatch(fetchOrderRequest());
+        dispatch(fetchUserRequest());
+    }, []);
+    console.log(user);
+
 
   const [orderButtons, setOrderButton] = useState([
     {
@@ -122,28 +117,28 @@ function App() {
 
       <Header
         newOrder={changeOrderState} 
-        first_name={summaryData?.first_name} 
-        last_name={summaryData?.last_name}/>
+        first_name={userData?.first_name} 
+        last_name={userData?.last_name}/>
 
       <hr className="header-container-hr"></hr>
 
       <UserData 
-        gender={summaryData?.gender}
-        birth_date={summaryData?.birth_date}
-        id={summaryData?.id}
-        mobile_phone={summaryData?.mobile_phone}
-        work_phone={summaryData?.work_phone}
-        home_phone={summaryData?.home_phone}
-        email={summaryData?.email}/>
+        gender={userData?.gender}
+        birth_date={userData?.birth_date}
+        id={userData?.id}
+        mobile_phone={userData?.mobile_phone}
+        work_phone={userData?.work_phone}
+        home_phone={userData?.home_phone}
+        email={userData?.email}/>
 
       <Activity 
-        sms={summaryData?.activity.sms}
-        email={summaryData?.activity.email}
-        orders={summaryData?.activity.orders}/>
+        sms={userData?.activity.sms}
+        email={userData?.activity.email}
+        orders={userData?.activity.orders}/>
 
       <SmsStatus 
-        status={summaryData?.carrier_status.status}
-        since={summaryData?.carrier_status.since}/>
+        status={userData?.carrier_status.status}
+        since={userData?.carrier_status.since}/>
 
       <hr className="sms-status-container-hr"></hr>
 

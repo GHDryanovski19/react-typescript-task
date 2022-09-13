@@ -336,6 +336,7 @@ code {
 .recent-orders-order-small-text {
   font-size: 14px;
   margin-top: 6px;
+  text-overflow: ellipsis;
 }
 .recent-orders-subject-container {
   width: 280px;
@@ -349,11 +350,12 @@ code {
   }
 }
 .recent-orders-order-type-container {
-  width: 120px;
+  width: 180px;
   font-size: 14px;
   color: $recent-orders-order-text-color;
   margin-left: 166.5px;
   padding-top: 12px;
+  overflow: hidden;
   text-overflow: ellipsis;
   text {
     white-space: nowrap;
@@ -362,7 +364,7 @@ code {
 .recent-orders-order-number-container {
   font-size: 14px;
   color: $recent-orders-order-text-color;
-  margin-left: 100px;
+  margin-left: 40px;
   padding-top: 12px;
   text-overflow: ellipsis;
   text {

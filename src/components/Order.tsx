@@ -1,15 +1,7 @@
+import { IOrder } from "../types";
+
 type orderData = {
-    sent: {
-        id: number
-        order_id: number
-        sent_dt: string
-        sent_tm: string
-        subject: {
-            title: string
-            email: string
-        }
-        type: string
-    } | undefined
+    sent: IOrder | undefined
 }
 
 const Order = ( { sent } : orderData ) => {
@@ -17,27 +9,28 @@ const Order = ( { sent } : orderData ) => {
     if (sent?.id !== undefined) {
           isOdd = sent.id % 2 === 0 ? true : false
     }
+
+    // Formating the fetched data
     
-    let dateSent: string = '';
+        let dateSent: string = '';
 
-    var  months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var  months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    var sentDate : string[] | undefined = sent?.sent_dt?.split('-');
-    if (sentDate !== undefined) {
-        const sentDateDay = new Date(parseInt(sentDate[0], 10), parseInt(sentDate[1], 10), parseInt(sentDate[2], 10))
-        var month = parseInt(sentDate[1], 10);
-        dateSent = sentDateDay.toLocaleDateString('en-US', {
-            weekday: 'short',
-          }) + ', ' + months[month] + ' ' + month;
-    }
+        var sentDate : string[] | undefined = sent?.sent_dt?.split('-');
+        if (sentDate !== undefined) {
+            const sentDateDay = new Date(parseInt(sentDate[0], 10), parseInt(sentDate[1], 10), parseInt(sentDate[2], 10))
+            var month = parseInt(sentDate[1], 10);
+            dateSent = sentDateDay.toLocaleDateString('en-US', {
+                weekday: 'short',
+            }) + ', ' + months[month] + ' ' + month;
+        }
 
-    const timeString : string | undefined = sent?.sent_tm;
+        const timeString : string | undefined = sent?.sent_tm;
 
-    const timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
-    .toLocaleTimeString('en-US',
-        {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
-    );
-
+        const timeString12hr = new Date('1970-01-01T' + timeString + 'Z')
+        .toLocaleTimeString('en-US',
+            {timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'}
+        );
   return (
     <div className={isOdd ? 'recent-orders-order bottom-order' : 'recent-orders-order top-order'}>
         <div className='recent-orders-order-time-container'>
@@ -50,7 +43,7 @@ const Order = ( { sent } : orderData ) => {
             <text className='recent-orders-order-small-text'>{sent?.subject.email}</text>
         </div>
         <div className='recent-orders-order-type-container'>
-            <text className='recent-orders-order-type '>{sent?.type}</text>
+            <text>{sent?.type}</text>
         </div>
         <div className='recent-orders-order-number-container'>
             <text>{sent?.order_id}</text>

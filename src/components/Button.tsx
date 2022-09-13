@@ -8,19 +8,14 @@ type ButtonProps = {
 }
 
 const Button = ( {color, text, functionality} : ButtonProps ) => {
-    const [disabled, setDisabled] = useState(false);
     const buttonStyle = {
         backgroundColor: color
     }
-    const buttonStyleDis = {
-        backgroundColor: color,
-        opacity: 1,
-        transition: 'none'
-    }
+
     return (
         <button className='header-container-button' 
-        style={disabled ? buttonStyleDis : buttonStyle}
-        onClick={() => {functionality(); setDisabled(true); setTimeout(() => {setDisabled(false)}, 1000);}}>{text}</button>
+        style={buttonStyle}
+        onClick={() => {functionality()}}>{text}</button>
     )
 }
 
