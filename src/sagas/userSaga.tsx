@@ -4,9 +4,11 @@ import { IUser } from "../types";
 import { fetchUserSuccess } from "../actions";
 import { reduxActionTypes } from "../actionTypes";
 
-const getUser = () =>
-    axios.get<IUser[]>("https://evoteam-verasoft.github.io/data/summary.json");
-
+const getUser = () => {
+    let response = axios.get("https://evoteam-verasoft.github.io/data/summary.json");
+    return response.then((response) => response.data);
+}
+    
 function* fetchUserSaga() {
     try {
         const response: IUser  = yield call(getUser);

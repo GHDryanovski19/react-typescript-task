@@ -1,10 +1,6 @@
-type activityType = {
-    sms: number | undefined
-    email: number | undefined
-    orders: number | undefined
-}
+import { activityType } from "../types";
 
-const Activity = ( {sms, email, orders} :activityType ) => {
+const Activity = ( { activity } : activityType ) => {
     return (
         <div className='activity-container'>
             <div className='activity-container-header'>
@@ -12,17 +8,17 @@ const Activity = ( {sms, email, orders} :activityType ) => {
             </div>
 
             <div className='activity-container-stat'>
-                <text className='activity-container-stat-number'>{sms}</text>
+                <text className='activity-container-stat-number'>{activity.sms}</text>
                 <div className='activity-container-stat-rect'>SMS</div>
             </div>
             
             <div className='activity-container-stat'>
-                <text className='activity-container-stat-number'>{email}</text>
+                <text className='activity-container-stat-number'>{activity.email}</text>
                 <div className='activity-container-stat-rect'>EMAIL</div>
             </div>
 
             <div className='activity-container-stat'>
-                <text className='activity-container-stat-number'>{orders}</text>
+                <text className='activity-container-stat-number'>{activity.orders}</text>
                 <div className='activity-container-stat-rect'>ORDERS</div>
             </div>
         </div>

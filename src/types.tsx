@@ -1,5 +1,33 @@
 import {reduxActionTypes} from "./actionTypes";
 
+export type LoadingScreenType = {
+    isVisible: boolean;
+    functionality: Function;
+}
+
+export type userDataType = {
+    gender: string;
+    birth_date: string;
+    id: number;
+    mobile_phone: string;
+    work_phone: string;
+    home_phone: string;
+    email: string;
+}
+
+export type activityType = {
+    activity:{
+        sms: number;
+        email: number;
+        orders: number;
+    }
+}
+
+export type smsStatusType = {
+    status: string;
+    since: string;
+}
+
 export interface IUser {
     id: number;
     first_name: string;
@@ -33,6 +61,14 @@ export interface IOrder {
     type:string;
 }
 
+export interface IOrders {
+    "orders_A" : {sent: IOrder[]},
+    "orders_AA" :{sent: IOrder[]},
+    "orders_AAA" : {sent: IOrder[]},
+    "orders_B" : {sent: IOrder[]},
+    "orders_C" : {sent: IOrder[]},
+}
+
 export interface UserState {
     pending: boolean;
     user: IUser[];
@@ -40,14 +76,14 @@ export interface UserState {
 
 export interface OrderState {
     pending: boolean;
-    orders: IOrder[];
+    orders: IOrders;
 }
 
 export interface FetchUserSuccessPayload {
     user: IUser;
 }
 export interface FetchOrderSuccessPayload {
-    orders: IOrder[];
+    orders: IOrders;
 }
 
 
@@ -71,4 +107,4 @@ export type ReduxActions =
     | FetchUserRequest
     | FetchOrderRequest
     | FetchUserSuccess
-    | FetchOrderSuccess;
+    | FetchOrderSuccess

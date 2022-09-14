@@ -1,8 +1,10 @@
-import {useEffect, useState } from "react";
-import BouncingDotsLoader from './BouncingDotsLoader'
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchOrderRequest } from "../actions";
+import { RootState } from "../reducers/rootReducer";
+import BouncingDotsLoader from './BouncingDotsLoader';
 import { IOrder } from "../types";
 import Order from "./Order";
-import axios from "axios";
 
 type orderDataType = {
     sent: IOrder[]
@@ -21,20 +23,16 @@ type subTabButtonsProps = {
 }
 
 const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTabButtonsProps ) => {
-    const ordersUrl = 'https://evoteam-verasoft.github.io/data/orders.json'
-    const [ordersData, setOrdersData] = useState<orderDataType>();
+    const dispatch = useDispatch();
+    const {pending, orders } = useSelector(
+        (state: RootState) => state.order
+    );
 
     useEffect(() => {
-        getOrdersData();
+        dispatch(fetchOrderRequest());
     }, []);
-  
-    const getOrdersData = () => {
-    axios.get(`${ordersUrl}`)
-    .then((res) => {
-        setOrdersData(res.data.orders_AAA);
-    })
-    .catch(error => console.error(`Error: ${error}`));
-    }
+
+    console.log(orders);
 
     const [hover, setHover] = useState(false);
     const [hoverSecond, setHoverSecond] = useState(false);
@@ -72,7 +70,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
             cursor: 'pointer',
             transition: 'all 200ms',
     }}
-
+    console.log(orders.orders_A.sent);
     return (
         <div>
             <div className='recent-orders-container'>
@@ -109,7 +107,8 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
                     <text className='recent-orders-categories-subject'>SUBJECT</text>
                     <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
                     <text className='recent-orders-categories-number'>ORDER #</text>
-                    {ordersData?.sent?.map((order) => (
+                    
+                    {orders.orders_AAA.sent.map((order) => (
                         <Order key={order.id} sent={order} />
                     ))}
                 </div> : '' }

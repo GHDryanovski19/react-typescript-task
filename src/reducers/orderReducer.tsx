@@ -4,7 +4,13 @@ import {ReduxActions, OrderState} from "../types";
 
 const initialState: OrderState = {
     pending: false,
-    orders: [],
+    orders: {
+        "orders_A" : {sent: []},
+        "orders_AA" :{sent: []},
+        "orders_AAA" : {sent: []},
+        "orders_B" : {sent: []},
+        "orders_C" : {sent: []},
+    }
 };
 
 export default (state = initialState, action: ReduxActions) => {
@@ -18,7 +24,7 @@ export default (state = initialState, action: ReduxActions) => {
             return {
                 ...state,
                 pending: false,
-                todos: [],
+                orders: action.payload.orders,
                 error: action.payload.orders,
             };
         default:
