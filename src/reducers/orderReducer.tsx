@@ -1,15 +1,15 @@
-import {reduxActionTypes} from "../actionTypes";
+import {reduxActionTypes} from '../actionTypes';
 
-import {ReduxActions, OrderState} from "../types";
+import {ReduxActions, OrderState} from '../types';
 
 const initialState: OrderState = {
     pending: false,
     orders: {
-        "orders_A" : {sent: []},
-        "orders_AA" :{sent: []},
-        "orders_AAA" : {sent: []},
-        "orders_B" : {sent: []},
-        "orders_C" : {sent: []},
+        'orders_A' : {sent: []},
+        'orders_AA' :{sent: []},
+        'orders_AAA' : {sent: []},
+        'orders_B' : {sent: []},
+        'orders_C' : {sent: []},
     }
 };
 

@@ -1,13 +1,8 @@
+import { HeaderProps } from '../types';
 import { useState } from 'react'
 import { FaRegStar } from 'react-icons/fa'
 import { FaStar } from 'react-icons/fa'
 import Button from './Button';
-
-type HeaderProps = {
-    newOrder: Function
-    first_name: string | undefined
-    last_name: string | undefined
-}
 
 const Header = ({ newOrder, first_name, last_name } : HeaderProps) => {
     const [hover, setHover] = useState(false);

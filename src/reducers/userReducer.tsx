@@ -1,6 +1,6 @@
-import {reduxActionTypes} from "../actionTypes";
+import {reduxActionTypes} from '../actionTypes';
 
-import {ReduxActions, UserState,} from "../types";
+import {ReduxActions, UserState,} from '../types';
 
 const initialState: UserState = {
     pending: false,

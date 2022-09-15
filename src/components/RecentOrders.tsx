@@ -1,39 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchOrderRequest } from "../actions";
-import { RootState } from "../reducers/rootReducer";
 import BouncingDotsLoader from './BouncingDotsLoader';
-import { IOrder } from "../types";
-import Order from "./Order";
+import Order from './Order';
+import { subTabButtonsProps } from '../types';
 
-type orderDataType = {
-    sent: IOrder[]
-}
-
-type subTabButtonState = {
-    id: number
-    text: string
-    isHighlighted: boolean
-}
-
-type subTabButtonsProps = {
-    orderButtons: subTabButtonState[]
-    subTabButtons: subTabButtonState[]
-    toggleSubTabButton: Function
-}
-
-const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTabButtonsProps ) => {
-    const dispatch = useDispatch();
-    const {pending, orders } = useSelector(
-        (state: RootState) => state.order
-    );
-
-    useEffect(() => {
-        dispatch(fetchOrderRequest());
-    }, []);
-
-    console.log(orders);
-
+const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabButtonsProps ) => {
     const [hover, setHover] = useState(false);
     const [hoverSecond, setHoverSecond] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -70,7 +40,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
             cursor: 'pointer',
             transition: 'all 200ms',
     }}
-    console.log(orders.orders_A.sent);
+
     return (
         <div>
             <div className='recent-orders-container'>
@@ -101,20 +71,18 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
 
                     <text className='recent-orders-header-text'>RECENT ORDERS</text>
                 </div>
-                {subTabButtons.at(0)?.isHighlighted && orderButtons.at(2)?.isHighlighted ? 
+                {orderData != undefined && subTabButtons.at(0)?.isHighlighted ?
                 <div className='recent-orders-categories'>
                     <text className='recent-orders-categories-date'>DATE & TIME</text>
                     <text className='recent-orders-categories-subject'>SUBJECT</text>
                     <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
                     <text className='recent-orders-categories-number'>ORDER #</text>
                     
-                    {orders.orders_AAA.sent.map((order) => (
+                    {orderData?.map((order) => (
                         <Order key={order.id} sent={order} />
                     ))}
-                </div> : '' }
-            </div>
-            {subTabButtons.at(1)?.isHighlighted || !orderButtons.at(2)?.isHighlighted ? 
-            <div className='no-items'>
+                </div> : 
+                <div className='no-items'>
                 {isLoaded ? 
                     <div>
                         <text>No Items</text>
@@ -123,7 +91,9 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderButtons} : subTa
                         <BouncingDotsLoader />
                     </div>
                 }             
-            </div> : '' }
+                </div> 
+                }
+            </div>
         </div>
     )
 }

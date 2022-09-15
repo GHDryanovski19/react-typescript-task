@@ -1,8 +1,20 @@
-import {reduxActionTypes} from "./actionTypes";
+import {reduxActionTypes} from './actionTypes';
 
 export type LoadingScreenType = {
     isVisible: boolean;
     functionality: Function;
+}
+
+export type HeaderProps = {
+    newOrder: Function
+    first_name: string | undefined
+    last_name: string | undefined
+}
+
+export type ButtonProps = {
+    color: string,
+    text: string
+    functionality: Function
 }
 
 export type userDataType = {
@@ -26,6 +38,40 @@ export type activityType = {
 export type smsStatusType = {
     status: string;
     since: string;
+}
+
+type OrderButtonState = {
+    id : number
+    text : string
+    isHighlighted : boolean
+}
+
+export type OrderButtonProps = {
+    orderButton: OrderButtonState | undefined
+    toggleOrderButton: Function
+    getOrderData: Function
+}
+
+export type OrderButtonsProps = {
+    orderButtons: OrderButtonState[]
+    toggleOrderButton: Function
+    getOrderData: Function
+}
+
+export type orderData = {
+    sent: IOrder | undefined
+}
+
+type subTabButtonState = {
+    id: number
+    text: string
+    isHighlighted: boolean
+}
+
+export type subTabButtonsProps = {
+    subTabButtons: subTabButtonState[]
+    toggleSubTabButton: Function
+    orderData: IOrder[] | undefined
 }
 
 export interface IUser {
@@ -62,11 +108,11 @@ export interface IOrder {
 }
 
 export interface IOrders {
-    "orders_A" : {sent: IOrder[]},
-    "orders_AA" :{sent: IOrder[]},
-    "orders_AAA" : {sent: IOrder[]},
-    "orders_B" : {sent: IOrder[]},
-    "orders_C" : {sent: IOrder[]},
+    'orders_A' : {sent: IOrder[]},
+    'orders_AA' :{sent: IOrder[]},
+    'orders_AAA' : {sent: IOrder[]},
+    'orders_B' : {sent: IOrder[]},
+    'orders_C' : {sent: IOrder[]},
 }
 
 export interface UserState {

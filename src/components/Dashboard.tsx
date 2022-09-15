@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchUserRequest } from "../actions";
-import { RootState } from "../reducers/rootReducer";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUserRequest } from '../actions';
+import { RootState } from '../reducers/rootReducer';
 import LoadingScreen from './LoadingScreen';
 import Header from './Header';
 import UserData from './UserData';

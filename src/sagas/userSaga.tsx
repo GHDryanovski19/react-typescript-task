@@ -1,11 +1,11 @@
-import axios from "axios";
-import { all, call, put, takeLatest } from "redux-saga/effects";
-import { IUser } from "../types";
-import { fetchUserSuccess } from "../actions";
-import { reduxActionTypes } from "../actionTypes";
+import axios from 'axios';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { IUser } from '../types';
+import { fetchUserSuccess } from '../actions';
+import { reduxActionTypes } from '../actionTypes';
 
 const getUser = () => {
-    let response = axios.get("https://evoteam-verasoft.github.io/data/summary.json");
+    let response = axios.get('https://evoteam-verasoft.github.io/data/summary.json');
     return response.then((response) => response.data);
 }
     

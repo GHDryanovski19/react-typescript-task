@@ -1,4 +1,4 @@
-import { activityType } from "../types";
+import { activityType } from '../types';
 
 const Activity = ( { activity } : activityType ) => {
     return (

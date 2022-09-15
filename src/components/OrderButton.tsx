@@ -1,18 +1,7 @@
 import { useState } from 'react'
-import PropTypes from 'prop-types'
+import { OrderButtonProps } from '../types'
 
-type OrderButtonState = {
-    id : number
-    text : string
-    isHighlighted : boolean
-}
-
-type OrderButtonsProps = {
-    orderButton: OrderButtonState | undefined // At index returns the type + undefined
-    toggleOrderButton: Function
-}
-
-const OrderButton = ({orderButton, toggleOrderButton} : OrderButtonsProps) => {
+const OrderButton = ({orderButton, toggleOrderButton, getOrderData} : OrderButtonProps) => {
     const [hover, setHover] = useState(false);
     const ButtonStyle = {
         marginLeft: `${orderButton?.id == 1 ? '151px' : '2px'}`,
@@ -29,7 +18,7 @@ const OrderButton = ({orderButton, toggleOrderButton} : OrderButtonsProps) => {
     }}
 
   return (
-    <button className='orders-container-button' 
+    <button className='orders-container-button'
     onMouseEnter={()=>{
         setHover(true);
     }}
@@ -37,16 +26,9 @@ const OrderButton = ({orderButton, toggleOrderButton} : OrderButtonsProps) => {
         setHover(false);
     }}
     style={hover ? ButtonStyle['&:hover'] : ButtonStyle} 
-    onClick={() => toggleOrderButton(orderButton?.id)}>{orderButton?.text}</button>
+    onClick={() => toggleOrderButton(orderButton?.id)}
+    {...getOrderData()}>{orderButton?.text}</button>
   )
-}
-
-OrderButton.defaultProps = {
-    text: 'ORDERS'
-}
-
-OrderButton.propTypes = {
-    text: PropTypes.string
 }
 
 export default OrderButton

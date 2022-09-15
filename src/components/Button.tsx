@@ -1,10 +1,5 @@
 import PropTypes from 'prop-types'
-
-type ButtonProps = {
-    color: string,
-    text: string
-    functionality: Function
-}
+import { ButtonProps } from '../types'
 
 const Button = ( {color, text, functionality} : ButtonProps ) => {
     const buttonStyle = {

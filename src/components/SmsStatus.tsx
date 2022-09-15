@@ -1,4 +1,4 @@
-import { smsStatusType } from "../types";
+import { smsStatusType } from '../types';
 
 const SmsStatus = ( {status, since} : smsStatusType) => {
     var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
