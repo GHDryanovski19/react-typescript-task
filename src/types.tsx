@@ -6,15 +6,15 @@ export type LoadingScreenType = {
 }
 
 export type HeaderProps = {
-    newOrder: Function
-    first_name: string | undefined
-    last_name: string | undefined
+    newOrder: Function;
+    first_name: string | undefined;
+    last_name: string | undefined;
 }
 
 export type ButtonProps = {
-    color: string,
-    text: string
-    functionality: Function
+    color: string;
+    text: string;
+    functionality: Function;
 }
 
 export type userDataType = {
@@ -41,37 +41,37 @@ export type smsStatusType = {
 }
 
 type OrderButtonState = {
-    id : number
-    text : string
-    isHighlighted : boolean
+    id : number;
+    text : string;
+    isHighlighted : boolean;
 }
 
 export type OrderButtonProps = {
-    orderButton: OrderButtonState | undefined
-    toggleOrderButton: Function
-    getOrderData: Function
+    orderButton: OrderButtonState | undefined;
+    toggleOrderButton: Function;
+    getOrderData: Function;
 }
 
 export type OrderButtonsProps = {
-    orderButtons: OrderButtonState[]
-    toggleOrderButton: Function
-    getOrderData: Function
+    orderButtons: OrderButtonState[];
+    toggleOrderButton: Function;
+    getOrderData: Function;
 }
 
 export type orderData = {
-    sent: IOrder | undefined
+    sent: IOrder | undefined;
 }
 
 type subTabButtonState = {
-    id: number
-    text: string
-    isHighlighted: boolean
+    id: number;
+    text: string;
+    isHighlighted: boolean;
 }
 
 export type subTabButtonsProps = {
-    subTabButtons: subTabButtonState[]
-    toggleSubTabButton: Function
-    orderData: IOrder[] | undefined
+    subTabButtons: subTabButtonState[];
+    toggleSubTabButton: Function;
+    orderData: IOrder[] | undefined;
 }
 
 export interface IUser {
@@ -95,6 +95,7 @@ export interface IUser {
         status: string
     };
 }
+
 export interface IOrder {
     id: number;
     order_id:number;
@@ -108,11 +109,11 @@ export interface IOrder {
 }
 
 export interface IOrders {
-    'orders_A' : {sent: IOrder[]},
-    'orders_AA' :{sent: IOrder[]},
-    'orders_AAA' : {sent: IOrder[]},
-    'orders_B' : {sent: IOrder[]},
-    'orders_C' : {sent: IOrder[]},
+    'orders_A' : {sent: IOrder[]};
+    'orders_AA' :{sent: IOrder[]};
+    'orders_AAA' : {sent: IOrder[]};
+    'orders_B' : {sent: IOrder[]};
+    'orders_C' : {sent: IOrder[]};
 }
 
 export interface UserState {

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
-import { ButtonProps } from '../types'
+import { ButtonProps } from '../../types'
+import style from './Header.module.scss'
 
 const Button = ( {color, text, functionality} : ButtonProps ) => {
     const buttonStyle = {
@@ -7,7 +8,7 @@ const Button = ( {color, text, functionality} : ButtonProps ) => {
     }
 
     return (
-        <button className='header-container-button' 
+        <button className={style['header-container-button']} 
         style={buttonStyle}
         onClick={() => {functionality()}}>{text}</button>
     )

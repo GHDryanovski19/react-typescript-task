@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import BouncingDotsLoader from './BouncingDotsLoader';
-import Order from './Order';
-import { subTabButtonsProps } from '../types';
+import Loader from '../BouncingDotsLoader/Loader';
+import Order from '../Order/Order';
+import { subTabButtonsProps } from '../../types';
+import style from './RecentOrders.module.scss'
 
 const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabButtonsProps ) => {
     const [hover, setHover] = useState(false);
@@ -43,9 +44,9 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
 
     return (
         <div>
-            <div className='recent-orders-container'>
-                <div className='recent-orders-header'>
-                    <button className='recent-orders-button-first'
+            <div className={style['recent-orders-container']}>
+                <div className={style['recent-orders-header']}>
+                    <button className={style['recent-orders-button-first']}
                             onMouseEnter={()=>{
                                 setHover(true);
                             }}
@@ -57,7 +58,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
                             setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(0)?.text}</a></button>
 
-                    <button className='recent-orders-button-second' 
+                    <button className={style['recent-orders-button-second']}
                             onMouseEnter={()=>{
                                 setHoverSecond(true);
                             }}
@@ -69,26 +70,26 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
                             setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(1)?.text}</a></button>
 
-                    <text className='recent-orders-header-text'>RECENT ORDERS</text>
+                    <text className={style['recent-orders-header-text']}>RECENT ORDERS</text>
                 </div>
                 {orderData != undefined && subTabButtons.at(0)?.isHighlighted ?
-                <div className='recent-orders-categories'>
-                    <text className='recent-orders-categories-date'>DATE & TIME</text>
-                    <text className='recent-orders-categories-subject'>SUBJECT</text>
-                    <text className='recent-orders-categories-type'>COMMUNICATION TYPE</text>
-                    <text className='recent-orders-categories-number'>ORDER #</text>
+                <div className={style['recent-orders-categories']}>
+                    <text className={style['recent-orders-categories-date']}>DATE & TIME</text>
+                    <text className={style['recent-orders-categories-subject']}>SUBJECT</text>
+                    <text className={style['recent-orders-categories-type']}>COMMUNICATION TYPE</text>
+                    <text className={style['recent-orders-categories-number']}>ORDER #</text>
                     
                     {orderData?.map((order) => (
                         <Order key={order.id} sent={order} />
                     ))}
                 </div> : 
-                <div className='no-items'>
+                <div className={style['no-items']}>
                 {isLoaded ? 
                     <div>
                         <text>No Items</text>
                     </div> : 
                     <div>
-                        <BouncingDotsLoader />
+                        <Loader />
                     </div>
                 }             
                 </div> 

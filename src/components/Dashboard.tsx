@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserRequest } from '../actions';
 import { RootState } from '../reducers/rootReducer';
-import LoadingScreen from './LoadingScreen';
-import Header from './Header';
-import UserData from './UserData';
-import Activity from './Activity';
-import SmsStatus from './SmsStatus';
+import LoadingScreen from './LoadingScreen/LoadingScreen';
+import Header from './Header/Header';
+import UserData from './UserData/UserData';
+import Activity from './Activity/Activity';
+import SmsStatus from './SmsStatus/SmsStatus';
 
 const Dashboard = () => {
     const dispatch = useDispatch();

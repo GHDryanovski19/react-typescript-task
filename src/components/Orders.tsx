@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchOrderRequest } from '../actions';
 import { RootState } from '../reducers/rootReducer';
-import OrdersButtons from './OrdersButtons';
-import RecentOrders from './RecentOrders';
+import OrderButtons from './OrderButtons/OrderButtons';
+import RecentOrders from './RecentOrders/RecentOrders';
 import { IOrder } from '../types';
 
 const Orders = () => {
@@ -86,7 +86,7 @@ const Orders = () => {
     }
     return (
       <div>
-          <OrdersButtons 
+          <OrderButtons 
           orderButtons={orderButtons} 
           toggleOrderButton={toggleOrderButton}
           getOrderData={getOrderData}/>

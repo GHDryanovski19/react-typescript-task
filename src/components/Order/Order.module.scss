@@ -1,0 +1,98 @@
+@import "../colors.sass";
+
+.recent-orders-order {
+    width: 1135px;
+    height: 70px;
+    box-sizing: border-box;
+    display: flex;
+    padding-top: 12px;
+
+    .recent-orders-order-time-container {
+        margin-left: 10px;
+        width: 80px;
+        color: $recent-orders-order-text-color;
+        overflow-wrap: break-word;
+
+        text {
+            white-space: nowrap;
+        }
+    }
+
+    .recent-orders-subject-container {
+        width: 280px;
+        overflow-wrap: break-word;
+        color: $recent-orders-order-text-color;
+        margin-left: 65px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        text {
+            white-space: nowrap;
+        }
+    }
+
+    .recent-orders-order-type-container {
+        width: 180px;
+        font-size: 14px;
+        color: $recent-orders-order-text-color;
+        margin-left: 166.5px;
+        padding-top: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        text {
+            white-space: nowrap;
+        }
+    }
+
+    .recent-orders-order-number-container {
+        width: 100px;
+        font-size: 14px;
+        color: $recent-orders-order-text-color;
+        padding-top: 12px;
+        margin-left: 40px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        text {
+            white-space: nowrap;
+        }
+    }
+
+    .recent-orders-order-small-text {
+        font-size: 14px;
+        margin-top: 6px;
+        text-overflow: ellipsis;
+    }
+
+    .recent-orders-resend-button {
+        width: 88px;
+        height: 28px;
+        border: 0;
+        border-radius: 3px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: $white-color;
+        background-color: $recent-orders-resend-button-bg;
+        font-weight: 400;
+        margin-top: 8px;
+        margin-left: 110px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $recent-orders-resend-button-bg-hover;
+        }
+
+        transition: all 200ms;
+    }
+}
+
+.top-order {
+    border-top: 1px solid $recent-orders-top-order-border;
+}
+
+.bottom-order {
+    background-color: $recent-orders-bottom-order-bg;
+    border-top: 1px solid $recent-orders-bottom-order-border;
+    border-bottom: 1px solid $recent-orders-bottom-order-border;
+}
