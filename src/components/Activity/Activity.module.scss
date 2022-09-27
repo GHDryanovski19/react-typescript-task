@@ -7,27 +7,27 @@
     margin-left: 359px;
     margin-top: -125px;
 
-    .activity-container-header {
+    .header {
         width: 559px;
         height: 30px;
         background: $user-data-bg-color;
         margin-left: 2px;
         align-items: center;
 
-        .activity-container-header-text {
+        .text {
             margin-left: 181px;
             font-size: 12px;
             font-family: "Open Sans", sans-serif;
         }    
     }
 
-    .activity-container-stat {
+    .stat {
         width: 185px;
         height: 95px;
         background: $user-data-bg-color;
         margin-left: 2px;
 
-        .activity-container-stat-number {
+        .number {
             font-size: 50px;
             text-align: center;
             font-family: "Open Sans", sans-serif;
@@ -35,7 +35,7 @@
             margin-left: 79px;
         }
     
-        .activity-container-stat-rect {
+        .rect {
             width: 185px;
             height: 24px;
             font-family: "Open Sans", sans-serif;

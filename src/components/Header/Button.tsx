@@ -8,7 +8,7 @@ const Button = ( {color, text, functionality} : ButtonProps ) => {
     }
 
     return (
-        <button className={style['header-container-button']} 
+        <button className={style['btn']} 
         style={buttonStyle}
         onClick={() => {functionality()}}>{text}</button>
     )

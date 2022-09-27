@@ -14,29 +14,29 @@ const UserData = ( {gender, birth_date, id, mobile_phone, work_phone, home_phone
 
     return (
         <div className={style['user-data-container']}>
-            <div className={style['user-data-first']}>
-                <FaRegUser className={style['user-data-first-icon']} />
-                <text className={style['user-data-first-text']}>{gender + ' - ' + getAge(birth_date)}</text>
+            <div className={style['first']}>
+                <FaRegUser className={style['icon']} />
+                <text className={style['text']}>{gender + ' - ' + getAge(birth_date)}</text>
             </div>
-            <div className={style['user-data-second']}>
-                <div className={`${style['user-data-second-rows-container']} ${style['user-data-second-rows-container-margin-first']}`}>
-                    <FaRegUser className={style['user-data-second-icon']}/>
+            <div className={style['second']}>
+                <div className={`${style['rows-container']} ${style['margin-first']}`}>
+                    <FaRegUser className={style['icon']}/>
                     <text>{'#' + id}</text>
                 </div>
-                <div className={`${style['user-data-second-rows-container']} ${style['user-data-second-rows-container-margin-first']}`}>
-                    <FaPhoneAlt className={style['user-data-second-icon']}/>
+                <div className={`${style['rows-container']} ${style['margin-first']}`}>
+                    <FaPhoneAlt className={style['icon']}/>
                     <text>{mobile_phone}</text>
                 </div>
-                <div className={`${style['user-data-second-rows-container']} ${style['user-data-second-rows-container-margin-second']}`}>
-                    <FaRegBuilding className={style['user-data-second-icon']}/>
+                <div className={`${style['rows-container']} ${style['margin-second']}`}>
+                    <FaRegBuilding className={style['icon']}/>
                     <text>{work_phone}</text>
                 </div>
-                <div className={`${style['user-data-second-rows-container']} ${style['user-data-second-rows-container-margin-second']}`}>
-                    <FaHome className={style['user-data-second-icon']}/>
+                <div className={`${style['rows-container']} ${style['margin-second']}`}>
+                    <FaHome className={style['icon']}/>
                     <text>{home_phone}</text>
                 </div>
-                <div className={`${style['user-data-second-rows-container']} ${style['user-data-second-rows-container-margin-second']}`}>
-                    <FaRegEnvelope className={style['user-data-second-icon']}/>
+                <div className={`${style['rows-container']} ${style['margin-second']}`}>
+                    <FaRegEnvelope className={style['icon']}/>
                     <text>{email}</text>
                 </div>
             </div>

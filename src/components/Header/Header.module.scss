@@ -3,14 +3,14 @@
 .header-container {
     display: flex;
 
-    .header-container-star-icon {
+    .star-icon {
         font-size: 25px;
         color: $star-color;
         margin-top: 24px;
         margin-left: 15px;
     }
 
-    .header-container-user-name {
+    .user-name {
         font-size: 25px;
         font-weight: 600;
         font-family: "Open Sans", sans-serif;
@@ -23,7 +23,7 @@
         text-overflow: ellipsis;
     }
 
-    .header-container-button {
+    .btn {
         width: 200px;
         height: 40px;
         border: 0;

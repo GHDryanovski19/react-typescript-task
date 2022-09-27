@@ -1,4 +1,4 @@
-import OrderButton from '../orderButton/OrderButton'
+import OrderButton from '../OrderButton/OrderButton'
 import { OrderButtonsProps } from '../../types'
 import style from './OrderButton.module.scss'
 

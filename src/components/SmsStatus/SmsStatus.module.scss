@@ -8,7 +8,7 @@
     margin-left: 925px;
     margin-top: -125px;
 
-    .sms-status-container-stat-rect {
+    .stat-rect {
         width: 225px;
         height: 24px;
         font-size: 10px;
@@ -20,7 +20,7 @@
         padding-top: 4px;
     }
 
-    .sms-status-container-header {
+    .header {
         font-size: 12px;
         font-family: "Open Sans", sans-serif;
         font-weight: 400;
@@ -29,7 +29,7 @@
         align-items: center;
     }
 
-    .sms-status-container-text {
+    .text {
         font-size: 50px;
         font-weight: 600;
         text-align: center;

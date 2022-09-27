@@ -29,22 +29,22 @@ const Order = ( { sent } : orderData ) => {
     return (
         <div className={isOdd ? `${style['recent-orders-order']} ${style['bottom-order']}`  
                               : `${style['recent-orders-order']} ${style['top-order']}`}>
-            <div className={style['recent-orders-order-time-container']}>
+            <div className={style['time-container']}>
                 <text>{dateSent}</text>
-                <text className={style['recent-orders-order-small-text']}>{timeString12hr}</text>
+                <text className={style['small-text']}>{timeString12hr}</text>
             </div>
-            <div className={style['recent-orders-subject-container']}>
+            <div className={style['subject-container']}>
                 <text>{sent?.subject.title}</text>
                 <br></br>
-                <text className={style['recent-orders-order-small-text']}>{sent?.subject.email}</text>
+                <text className={style['small-text']}>{sent?.subject.email}</text>
             </div>
-            <div className={style['recent-orders-order-type-container']}>
+            <div className={style['type-container']}>
                 <text>{sent?.type}</text>
             </div>
-            <div className={style['recent-orders-order-number-container']}>
+            <div className={style['number-container']}>
                 <text>{sent?.order_id}</text>
             </div>
-            <button className={style['recent-orders-resend-button']}>RESEND</button>
+            <button className={style['resend-button']}>RESEND</button>
         </div>
     )
 }

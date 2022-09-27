@@ -86,7 +86,7 @@ const Orders = () => {
     }
     return (
       <div>
-          <OrderButtons 
+        <OrderButtons 
           orderButtons={orderButtons} 
           toggleOrderButton={toggleOrderButton}
           getOrderData={getOrderData}/>

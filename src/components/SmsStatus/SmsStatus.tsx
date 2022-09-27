@@ -13,9 +13,9 @@ const SmsStatus = ( {status, since} : smsStatusType) => {
 
   return (
       <div className={status === "IN" ? `${style['sms-status-container']} ${style['sms-in']}` : `${style['sms-status-container']} ${style['sms-out']}`}>
-        <text className={style['sms-status-container-header']}>SMS CARRIER STATUS</text>
-        <text className={style['sms-status-container-text']}>{status}</text>
-        <div className={style['sms-status-container-stat-rect']}>{formatDate(since)}</div>  
+        <text className={style['header']}>SMS CARRIER STATUS</text>
+        <text className={style['text']}>{status}</text>
+        <div className={style['stat-rect']}>{formatDate(since)}</div>  
       </div>
   )
 }

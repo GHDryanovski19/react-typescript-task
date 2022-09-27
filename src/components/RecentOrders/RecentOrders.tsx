@@ -45,8 +45,8 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
     return (
         <div>
             <div className={style['recent-orders-container']}>
-                <div className={style['recent-orders-header']}>
-                    <button className={style['recent-orders-button-first']}
+                <div className={style['header']}>
+                    <button className={style['btn-first']}
                             onMouseEnter={()=>{
                                 setHover(true);
                             }}
@@ -58,7 +58,7 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
                             setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(0)?.text}</a></button>
 
-                    <button className={style['recent-orders-button-second']}
+                    <button className={style['btn-second']}
                             onMouseEnter={()=>{
                                 setHoverSecond(true);
                             }}
@@ -70,14 +70,14 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
                             setIsLoaded(false), setTimeout(() => {toggleIsLoading()}, 2000))}
                     ><a>{subTabButtons.at(1)?.text}</a></button>
 
-                    <text className={style['recent-orders-header-text']}>RECENT ORDERS</text>
+                    <text className={style['text']}>RECENT ORDERS</text>
                 </div>
                 {orderData != undefined && subTabButtons.at(0)?.isHighlighted ?
-                <div className={style['recent-orders-categories']}>
-                    <text className={style['recent-orders-categories-date']}>DATE & TIME</text>
-                    <text className={style['recent-orders-categories-subject']}>SUBJECT</text>
-                    <text className={style['recent-orders-categories-type']}>COMMUNICATION TYPE</text>
-                    <text className={style['recent-orders-categories-number']}>ORDER #</text>
+                <div className={style['categories']}>
+                    <text className={style['date']}>DATE & TIME</text>
+                    <text className={style['subject']}>SUBJECT</text>
+                    <text className={style['type']}>COMMUNICATION TYPE</text>
+                    <text className={style['number']}>ORDER #</text>
                     
                     {orderData?.map((order) => (
                         <Order key={order.id} sent={order} />

@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
 
-    .recent-orders-header {
+    .header {
         width: 1135px;
         height: 41px;
         background-color: $recent-orders-header-color;
@@ -12,7 +12,7 @@
         padding-bottom: 36.5px;
         margin-left: 15px;
 
-        .recent-orders-button-first {
+        .btn-first {
             width: 67px;
             height: 23px;
             border: 0;
@@ -23,7 +23,7 @@
             cursor: pointer;
         }
 
-        .recent-orders-button-second {
+        .btn-second {
             width: 83px;
             height: 23px;
             border: 0;
@@ -34,7 +34,7 @@
             cursor: pointer;
         }
 
-        .recent-orders-header-text {
+        .text {
             width: 126px;
             height: 22px;
             color: $white-color;
@@ -45,7 +45,7 @@
         }
     }
 
-    .recent-orders-categories {
+    .categories {
         width: 1135px;
         height: 24px;
         border-bottom: 1px $recent-orders-categories-border;
@@ -53,26 +53,26 @@
         line-height: 24px;
         margin-left: 15px;
 
-        .recent-orders-categories-date {
+        .date {
             color: $recent-orders-caategories-text;
             font-size: 10px;
             margin-left: 10px;
             margin-top: 8px;
         }
 
-        .recent-orders-categories-subject {
+        .subject {
             color: $recent-orders-caategories-text;
             font-size: 10px;
             margin-left: 86px;
         }
 
-        .recent-orders-categories-type {
+        .type {
             color: $recent-orders-caategories-text;
             font-size: 10px;
             margin-left: 410px;
         }
 
-        .recent-orders-categories-number {
+        .number {
             color: $recent-orders-caategories-text;
             font-size: 10px;
             margin-left: 113px;

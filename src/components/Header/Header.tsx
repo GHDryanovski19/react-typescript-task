@@ -22,7 +22,7 @@ const Header = ({ newOrder, first_name, last_name } : HeaderProps) => {
     return (
         <div className={style['header-container']}>
             {star ? 
-            <FaStar className={style['header-container-star-icon']} 
+            <FaStar className={style['star-icon']} 
                 onMouseEnter={()=>{
                     setHover(true);
                 }}
@@ -30,7 +30,7 @@ const Header = ({ newOrder, first_name, last_name } : HeaderProps) => {
                     setHover(false);
                 }}
                 style={hover ? starIconStyle['&:hover'] : starIconStyle} onClick={() => (setStar(!star))}/> :
-            <FaRegStar className={style['header-container-star-icon']} 
+            <FaRegStar className={style['star-icon']} 
                 onMouseEnter={()=>{
                     setHover(true);
                 }}
@@ -39,7 +39,7 @@ const Header = ({ newOrder, first_name, last_name } : HeaderProps) => {
                 }}
                 style={hover ? starIconStyle['&:hover'] : starIconStyle} onClick={() => (setStar(!star))}/> 
             }
-            <text className={style['header-container-user-name']}>{first_name + ' ' + last_name}</text>
+            <text className={style['user-name']}>{first_name + ' ' + last_name}</text>
             <Button functionality={newOrder}/>
         </div>
     )
