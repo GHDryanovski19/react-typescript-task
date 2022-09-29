@@ -44,7 +44,8 @@ const Dashboard = () => {
                         mobile_phone={user['mobile_phone']}
                         work_phone={user['work_phone']}
                         home_phone={user['home_phone']}
-                        email={user['email']}/>
+                        email={user['email']}
+                        photo_url={user['photo_url']}/>
 
                     <Activity activity={user['activity']}/>
 

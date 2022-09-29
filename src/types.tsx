@@ -25,6 +25,7 @@ export type userDataType = {
     work_phone: string;
     home_phone: string;
     email: string;
+    photo_url: string;
 }
 
 export type activityType = {

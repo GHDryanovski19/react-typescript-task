@@ -6,7 +6,7 @@ import { FaRegEnvelope } from 'react-icons/fa'
 import { userDataType } from '../../types'
 import style from './UserData.module.scss'
 
-const UserData = ( {gender, birth_date, id, mobile_phone, work_phone, home_phone, email} : userDataType ) => {
+const UserData = ( {gender, birth_date, id, mobile_phone, work_phone, home_phone, email, photo_url} : userDataType ) => {
 
     function getAge (birthDate : string) {
         return Math.floor((Math.abs(Date.now() - new Date(birthDate).getTime())/(1000 * 3600 * 24)/365.25));
@@ -15,7 +15,10 @@ const UserData = ( {gender, birth_date, id, mobile_phone, work_phone, home_phone
     return (
         <div className={style['user-data-container']}>
             <div className={style['first']}>
-                <FaRegUser className={style['icon']} />
+                {photo_url !== null ?
+                    <img src={photo_url}></img> :
+                    <FaRegUser className={style['icon']} />
+                }
                 <text className={style['text']}>{gender + ' - ' + getAge(birth_date)}</text>
             </div>
             <div className={style['second']}>
