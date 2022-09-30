@@ -9,9 +9,11 @@
 
     .time-container {
         margin-left: 10px;
-        width: 80px;
+        width: 125px;
         color: $recent-orders-order-text-color;
         overflow-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         text {
             white-space: nowrap;
@@ -20,9 +22,9 @@
 
     .subject-container {
         width: 280px;
-        overflow-wrap: break-word;
+        margin-left: 20px;
         color: $recent-orders-order-text-color;
-        margin-left: 65px;
+        overflow-wrap: break-word;
         overflow: hidden;
         text-overflow: ellipsis;
 
