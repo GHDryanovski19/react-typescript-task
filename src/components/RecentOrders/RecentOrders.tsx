@@ -73,12 +73,14 @@ const RecentOrders = ( {subTabButtons, toggleSubTabButton, orderData} : subTabBu
                     <text className={style['text']}>RECENT ORDERS</text>
                 </div>
                 {orderData != undefined && subTabButtons.at(0)?.isHighlighted ?
-                <div className={style['categories']}>
-                    <text className={style['date']}>DATE & TIME</text>
-                    <text className={style['subject']}>SUBJECT</text>
-                    <text className={style['type']}>COMMUNICATION TYPE</text>
-                    <text className={style['number']}>ORDER #</text>
-                    
+                <div className={style['orders']}>
+                    <div className={style['categories']}>
+                        <text className={style['date']}>DATE & TIME</text>
+                        <text className={style['subject']}>SUBJECT</text>
+                        <text className={style['type']}>COMMUNICATION TYPE</text>
+                        <text className={style['number']}>ORDER #</text>
+                    </div>
+
                     {orderData?.map((order) => (
                         <Order key={order.id} sent={order} />
                     ))}
