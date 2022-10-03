@@ -1,0 +1,70 @@
+@import "../colors.sass";
+
+.user-data-container {
+    display: flex;
+    margin-top: 6.5px;
+
+    .first {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 97px;
+        height: 125px;
+        background: $user-data-bg-color;
+        margin-left: 15px;
+
+        .icon {
+            width: 72px;
+            height: 72px;
+            color: $white-color;
+        }
+
+        .text {
+            font-size: 10px;
+            font-weight: 400;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+    }
+
+    .second {
+        display: flex;
+        flex-direction: column;
+        width: 239px;
+        height: 125px;
+        background: $user-data-bg-color;
+        margin-left: 5px;
+
+        .rows-container {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            margin-left: 12px;
+
+            text {
+                width: 190px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 12px;
+                font-weight: 400;
+                font-family: "Open Sans", sans-serif;
+            }
+
+            .icon {
+                font-size: 14px;
+                color: $user-data-second-icon-color;
+                margin-right: 8px;
+            }
+        }
+
+        .margin-first {
+            margin-top: 8.27px;
+        }
+
+        .margin-second {
+            margin-top: 6.27px;
+        }
+    }
+}
