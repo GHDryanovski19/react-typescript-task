@@ -1,0 +1,94 @@
+@import "../colors.sass";
+
+.recent-orders-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    .header {
+        width: 1135px;
+        background-color: $recent-orders-header-color;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        margin-left: 15px;
+
+        .btn-first {
+            width: 67px;
+            height: 23px;
+            border: 0;
+            border-radius: 11px;
+            font-size: 10px;
+            margin-left: 10px;
+            transition: all 200ms;
+            cursor: pointer;
+        }
+
+        .btn-second {
+            width: 83px;
+            height: 23px;
+            border: 0;
+            border-radius: 11px;
+            font-size: 10px;
+            margin-left: 5px;
+            transition: all 200ms;
+            cursor: pointer;
+        }
+
+        .text {
+            width: 126px;
+            height: 22px;
+            color: $white-color;
+            font-size: 16px;
+            font-family: "Open Sans", sans-serif;
+            font-weight: 600;
+            margin-left: 340px;
+        }
+    }
+
+    .orders {
+        width: 1135px;
+        height: 24px;
+        border-bottom: 1px $recent-orders-categories-border;
+        vertical-align: middle;
+        line-height: 24px;
+        margin-left: 15px;
+
+        .categories {
+            color: $recent-orders-categories-text;
+            font-size: 10px;
+            margin-left: 10px;
+            display: flex;
+            white-space: nowrap;
+
+            .date {
+                width: 144.5px;
+            }
+    
+            .subject {
+                width: 448px;
+            }
+    
+            .type {
+                width: 220px;
+            }
+    
+            .number {
+                width: 200px;
+            }
+        }
+    }
+
+    .no-items {
+        width: 1135px;
+        background-color: $no-items-bg;
+        margin-left: 15px;
+        padding-top: 86px;
+        padding-bottom: 86px;
+
+        text {
+            font-family: "Open Sans", sans-serif;
+            font-size: 21px;
+            color: $no-items-text-color;
+            margin-left: 523px;
+        }
+    }
+}
